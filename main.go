@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kmecnin/dices-stats/input"
+	"github.com/kmecnin/dice-stats/input"
+	"github.com/kmecnin/dice-stats/stats"
 )
 
 func main() {
@@ -13,13 +14,27 @@ func main() {
 
 	throw, err := input.NewThrow(args[0])
 	if nil != err {
-		handleError(err)
+		displayError(err)
 	}
 
-	fmt.Println(throw)
+	keepMessage := ""
+	if throw.KeepNumber > 0 {
+		keepMessage = fmt.Sprintf(
+			" and keeping %v best dice",
+			throw.KeepNumber,
+		)
+	}
+	fmt.Printf(
+		"Generating probability distributions using %v dice with %v faces%v...\n",
+		throw.DiceNumber,
+		throw.DiceFaces,
+		keepMessage,
+	)
+
+	stats.ProbabilityDistributionOfScore(throw)
 }
 
-func handleError(err error) {
+func displayError(err error) {
 	fmt.Printf("Error: %v\n", err)
 	os.Exit(1)
 }

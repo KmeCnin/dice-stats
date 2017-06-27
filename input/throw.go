@@ -2,15 +2,17 @@ package input
 
 import (
 	"fmt"
+	"math/rand"
 	"regexp"
 	"strconv"
+	"time"
 )
 
 // Throw returns a parsed set of data gave by user.
 type Throw struct {
-	DicesNumber int
-	DicesFaces  int
-	KeepNumber  int
+	DiceNumber int
+	DiceFaces  int
+	KeepNumber int
 }
 
 // NewThrow creates and returns a parsed input from data raw input.
@@ -28,11 +30,11 @@ func NewThrow(query string) (Throw, error) {
 	}
 
 	// Cast values to int.
-	dicesNumber, err := strconv.Atoi(res[0][1])
+	diceNumber, err := strconv.Atoi(res[0][1])
 	if nil != err {
 		return Throw{}, err
 	}
-	dicesFaces, err := strconv.Atoi(res[0][2])
+	diceFaces, err := strconv.Atoi(res[0][2])
 	if nil != err {
 		return Throw{}, err
 	}
@@ -45,8 +47,22 @@ func NewThrow(query string) (Throw, error) {
 	}
 
 	return Throw{
-		DicesNumber: dicesNumber,
-		DicesFaces:  dicesFaces,
-		KeepNumber:  keepNumber,
+		DiceNumber: diceNumber,
+		DiceFaces:  diceFaces,
+		KeepNumber: keepNumber,
 	}, nil
+}
+
+// Try launches the dice defined in given throw and sum all the results up.
+func (t *Throw) Try() int {
+	rand.Seed(time.Now().UTC().UnixNano())
+	sum := 0
+	for i := 0; i < t.DiceNumber; i++ {
+		sum += launchDie(t.DiceFaces)
+	}
+	return sum
+}
+
+func launchDie(faces int) int {
+	return rand.Intn(faces) + 1
 }
