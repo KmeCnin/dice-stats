@@ -1,2 +1,2 @@
-# dices-stats
-Generate statistic distribution according initial dices strategy
+# dice-stats
+Generate statistic distribution according initial dice strategy.
