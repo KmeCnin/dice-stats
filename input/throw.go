@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"regexp"
+	"sort"
 	"strconv"
 	"time"
 )
@@ -15,8 +16,8 @@ type Throw struct {
 	KeepNumber int
 }
 
-// NewThrow creates and returns a parsed input from data raw input.
-func NewThrow(query string) (Throw, error) {
+// GetThrow creates and returns a parsed input from data raw input.
+func GetThrow(query string) (Throw, error) {
 	// Create regexp.
 	re, err := regexp.Compile(`^(\d+)d(\d+)k?(\d+)?`)
 	if nil != err {
@@ -56,10 +57,21 @@ func NewThrow(query string) (Throw, error) {
 // Try launches the dice defined in given throw and sum all the results up.
 func (t *Throw) Try() int {
 	rand.Seed(time.Now().UTC().UnixNano())
-	sum := 0
+	var launches []int
 	for i := 0; i < t.DiceNumber; i++ {
-		sum += launchDie(t.DiceFaces)
+		launches = append(launches, launchDie(t.DiceFaces))
 	}
+
+	if t.KeepNumber > 0 {
+		sort.Sort(sort.Reverse(sort.IntSlice(launches)))
+		launches = launches[:t.KeepNumber]
+	}
+
+	sum := 0
+	for _, i := range launches {
+		sum += i
+	}
+
 	return sum
 }
 

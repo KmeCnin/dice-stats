@@ -2,6 +2,7 @@ package charts
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strconv"
 )
@@ -9,25 +10,39 @@ import (
 // DrawProbabilitiesHistogram displays probabilities as a histogram chart.
 func DrawProbabilitiesHistogram(p map[int]int) {
 	var keys []int
-	max := 0
+	maxY := 0
+	maxX := 0
 	for k, freq := range p {
 		keys = append(keys, k)
-		if max < freq {
-			max = freq
+		if maxY < freq {
+			maxY = freq
+		}
+		if maxX < k {
+			maxX = k
 		}
 	}
 	sort.Ints(keys)
 	fmt.Print("\n")
-	for i := max; i > 0; i-- {
+	digits := int(math.Log10(float64(maxX))) + 1
+	for i := maxY; i > 0; i-- {
 		// Print Y axes.
 		fmt.Printf("%v%%", indentInt(i, 3))
 		for _, k := range keys {
 			if p[k] == i {
-				fmt.Print(" ▄▄")
+				fmt.Print(" ")
+				for j := 0; j < digits; j++ {
+					fmt.Print("▄")
+				}
 			} else if p[k] > i {
-				fmt.Print(" ██")
+				fmt.Print(" ")
+				for j := 0; j < digits; j++ {
+					fmt.Print("█")
+				}
 			} else {
-				fmt.Print("   ")
+				fmt.Print(" ")
+				for j := 0; j < digits; j++ {
+					fmt.Print(" ")
+				}
 			}
 		}
 		fmt.Print("\n")
@@ -35,7 +50,7 @@ func DrawProbabilitiesHistogram(p map[int]int) {
 	// Print X axes.
 	fmt.Print("    ")
 	for _, k := range keys {
-		fmt.Printf("%v", indentInt(k, 3))
+		fmt.Printf("%v", indentInt(k, digits+1))
 	}
 	fmt.Println()
 }
