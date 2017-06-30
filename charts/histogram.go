@@ -14,8 +14,8 @@ func DrawProbabilitiesHistogramWin(p stats.VersusProbabilities) {
 	fmt.Println()
 	win := int(p.Win)
 	draw := int(p.Draw)
-	fmt.Printf("Win: %.2f%%\n", p.Win)
-	fmt.Printf("Draw: %.2f%%\n", p.Draw)
+	fmt.Printf("Win: %.2f%%\t", p.Win)
+	fmt.Printf("Draw: %.2f%%\t", p.Draw)
 	fmt.Printf("Lose: %.2f%%\n", p.Lose)
 	for j := 0; j < 2; j++ {
 		for i := 0; i <= win; i++ {
