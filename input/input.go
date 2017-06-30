@@ -8,14 +8,20 @@ import (
 type Input struct {
 	Query      string
 	Iterations int
+	Versus     string
 }
 
 // ParseCommand validate and get data from user input.
 func ParseCommand() (Input, error) {
 	i := flag.Int(
 		"i",
-		1000000,
+		1000000, // 1m
 		"number of tries to do to generate stats",
+	)
+	vs := flag.String(
+		"vs",
+		"",
+		"throw query to try against",
 	)
 
 	flag.Parse()
@@ -23,5 +29,6 @@ func ParseCommand() (Input, error) {
 	return Input{
 		Query:      flag.Args()[0],
 		Iterations: *i,
+		Versus:     *vs,
 	}, nil
 }

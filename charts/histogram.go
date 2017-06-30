@@ -5,10 +5,35 @@ import (
 	"math"
 	"sort"
 	"strconv"
+
+	"github.com/kmecnin/dice-stats/stats"
 )
 
-// DrawProbabilitiesHistogram displays probabilities as a histogram chart.
-func DrawProbabilitiesHistogram(p map[int]int) {
+// DrawProbabilitiesHistogramWin displays probabilities as a histogram chart.
+func DrawProbabilitiesHistogramWin(p stats.VersusProbabilities) {
+	fmt.Println()
+	win := int(p.Win)
+	draw := int(p.Draw)
+	fmt.Printf("Win: %.2f%%\n", p.Win)
+	fmt.Printf("Draw: %.2f%%\n", p.Draw)
+	fmt.Printf("Lose: %.2f%%\n", p.Lose)
+	for j := 0; j < 2; j++ {
+		for i := 0; i <= win; i++ {
+			fmt.Print("█")
+		}
+		for i := win; i <= win+draw; i++ {
+			fmt.Print(" ")
+		}
+		for i := win + draw; i <= 100; i++ {
+			fmt.Print("░")
+		}
+		fmt.Println()
+	}
+	fmt.Println()
+}
+
+// DrawProbabilitiesHistogramScore displays probabilities as a histogram chart.
+func DrawProbabilitiesHistogramScore(p map[int]int) {
 	var keys []int
 	maxY := 0
 	maxX := 0
@@ -22,24 +47,22 @@ func DrawProbabilitiesHistogram(p map[int]int) {
 		}
 	}
 	sort.Ints(keys)
-	fmt.Print("\n")
+	fmt.Println()
 	digits := int(math.Log10(float64(maxX))) + 1
 	for i := maxY; i > 0; i-- {
 		// Print Y axes.
 		fmt.Printf("%v%%", indentInt(i, 3))
 		for _, k := range keys {
+			fmt.Print(" ")
 			if p[k] == i {
-				fmt.Print(" ")
 				for j := 0; j < digits; j++ {
 					fmt.Print("▄")
 				}
 			} else if p[k] > i {
-				fmt.Print(" ")
 				for j := 0; j < digits; j++ {
 					fmt.Print("█")
 				}
 			} else {
-				fmt.Print(" ")
 				for j := 0; j < digits; j++ {
 					fmt.Print(" ")
 				}
@@ -74,5 +97,14 @@ func indentInt(n int, length int) string {
 			str += " "
 		}
 	}
+	return str
+}
+
+func indentFloat(f float64, length int) string {
+	str := fmt.Sprintf("%.2f", f)
+	for i := len(str); i < length; i++ {
+		str = fmt.Sprintf(" %v", str)
+	}
+
 	return str
 }
