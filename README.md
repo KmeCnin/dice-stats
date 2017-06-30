@@ -15,3 +15,13 @@ Generate probability distribution for throwing 2 dice with 6 faces:
 > ./dice-stats 2d6
 ```
 ![Output: 2d6](doc/output/2d6.png)
+Generate probability distribution for throwing 3 dice with 10 faces:
+```shell
+> ./dice-stats 3d10
+```
+![Output: 3d10](doc/output/3d10.png)
+Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results:
+```shell
+> ./dice-stats 7d6k3
+```
+![Output: 7d6k3](doc/output/7d6k3.png)
