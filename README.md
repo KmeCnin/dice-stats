@@ -16,14 +16,16 @@ The only **argument** required is a string query following the format`{n}d{m}(k{
 - Syntax: `-i`
 - Type: `int`
 - Default: `1000000`
+- Example: `> ./dice-stats -i=10000 2d6`
 
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
 - Syntax:`-vs`
 - Type: `string`
 - Default: *none*
+- Example: `> ./dice-stats -vs=3d6 2d6`
 
-Use another dice throw and compare win.
+Use another dice throw and compare chances to win against this one.
 ## Example
 Generate probability distribution for throwing 2 dice with 6 faces:
 ```shell
