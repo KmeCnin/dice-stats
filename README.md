@@ -42,11 +42,11 @@ Generate probability distribution for throwing 7 dice with 6 faces and keeping t
 > ./dice-stats 7d6k3
 ```
 ![Output: 7d6k3](doc/output/7d6k3.png)
-Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results:
+Generate probability distribution of winning throwing 7 dice with 6 faces and keeping the 3 best results against 5 dice with 6 faces and keeping the 3 best:
 ```shell
-> ./dice-stats 7d6k3
+> ./dice-stats -vs=5d6k3 7d6k3
 ```
-![Output: 7d6k3](doc/output/7d6k3.png)
+![Output: -vs=5d6k3 7d6k3](doc/output/-vs=5d6k3_7d6k3.png)
 Generate probability distribution of winning throwing 17 dice with 4 faces and keeping the 9 best results against 25 dice with 4 faces and keeping the 6 best:
 ```shell
 > ./dice-stats -vs=25d4k6 17d4k9
