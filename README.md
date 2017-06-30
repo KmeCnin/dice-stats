@@ -21,7 +21,7 @@ The only **argument** required is a string query following the format`{n}d{m}(k{
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
 - Syntax:`-vs`
-- Type: `string`
+- Type: `string` using throw query format
 - Default: *none*
 - Example: `> ./dice-stats -vs=3d6 2d6`
 
