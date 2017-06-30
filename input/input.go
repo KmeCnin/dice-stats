@@ -14,7 +14,7 @@ type Input struct {
 func ParseCommand() (Input, error) {
 	i := flag.Int(
 		"i",
-		100000,
+		1000000,
 		"number of tries to do to generate stats",
 	)
 

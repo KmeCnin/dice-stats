@@ -6,7 +6,6 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
-	"time"
 )
 
 // Throw returns a parsed set of data gave by user.
@@ -56,7 +55,6 @@ func GetThrow(query string) (Throw, error) {
 
 // Try launches the dice defined in given throw and sum all the results up.
 func (t *Throw) Try() int {
-	rand.Seed(time.Now().UTC().UnixNano())
 	var launches []int
 	for i := 0; i < t.DiceNumber; i++ {
 		launches = append(launches, launchDie(t.DiceFaces))
