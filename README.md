@@ -13,17 +13,17 @@ The only **argument** required is a string query following the format`{n}d{m}(k{
 **Examples:** `2d6`, `3d10`, `7d6k3`.
 ### Command Option
 #### Iterations
-- Syntax: `-i`
-- Type: `int`
-- Default: `1000000`
-- Example: `> ./dice-stats -i=10000 2d6`
+- **Syntax:** `-i`
+- **Type:** `int`
+- **Default:** `1000000`
+- **Example:** `> ./dice-stats -i=10000 2d6`
 
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
-- Syntax:`-vs`
-- Type: `string` using throw query format
-- Default: *none*
-- Example: `> ./dice-stats -vs=3d6 2d6`
+- **Syntax:** `-vs`
+- **Type:** `string` using throw query format
+- **Default:** *none*
+- **Example:** `> ./dice-stats -vs=3d6 2d6`
 
 Use another dice throw and compare chances to win against this one.
 ## Example
