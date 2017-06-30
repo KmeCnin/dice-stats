@@ -5,7 +5,7 @@ This software generate probability distribution for a given dice throw.
 *TODO*
 ## Use
 ### Throw query format
-The only argument required is a string query following the format`{n}d{m}(k{p})` where:
+The only **argument** required is a string query following the format`{n}d{m}(k{p})` where:
 - `n`: number of dice to throw
 - `m`: number of faces of each dice
 - `p`: number of best dice results to keep  
@@ -16,11 +16,13 @@ The only argument required is a string query following the format`{n}d{m}(k{p})`
 - Syntax: `-i`
 - Type: `int`
 - Default: `1000000`
+
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
 - Syntax:`-vs`
 - Type: `string`
-- Default: none
+- Default: *none*
+
 Use another dice throw and compare win.
 ## Example
 Generate probability distribution for throwing 2 dice with 6 faces:
