@@ -27,18 +27,28 @@ Number of iterations to use in order to define probabilities accuracy.
 
 Use another dice throw and compare chances to win against this one.
 ## Example
-#### Generate probability distribution for throwing 2 dice with 6 faces
+Generate probability distribution for throwing 2 dice with 6 faces:
 ```shell
 > ./dice-stats 2d6
 ```
 ![Output: 2d6](doc/output/2d6.png)
-#### Generate probability distribution for throwing 3 dice with 10 faces
+Generate probability distribution for throwing 3 dice with 10 faces:
 ```shell
 > ./dice-stats 3d10
 ```
 ![Output: 3d10](doc/output/3d10.png)
-#### Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results
+Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results:
 ```shell
 > ./dice-stats 7d6k3
 ```
 ![Output: 7d6k3](doc/output/7d6k3.png)
+Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results:
+```shell
+> ./dice-stats 7d6k3
+```
+![Output: 7d6k3](doc/output/7d6k3.png)
+Generate probability distribution of winning throwing 17 dice with 4 faces and keeping the 9 best results against 25 dice with 4 faces and keeping the 6 best:
+```shell
+> ./dice-stats -vs=25d4k6 17d4k9
+```
+![Output: -vs=25d4k6 17d4k9](doc/output/-vs=25d4k6_17d4k9.png)
