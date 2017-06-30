@@ -14,3 +14,4 @@ Generate probability distribution for throwing 2 dice with 6 faces:
 ```shell
 > ./dice-stats 2d6
 ```
+![Output: 2d6](doc/output/2d6.png)
