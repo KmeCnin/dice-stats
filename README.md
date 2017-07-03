@@ -23,15 +23,15 @@ Requires a string that must follow the `Throw query format`.
 Can be a string that must follow the `Throw query format` or be empty in order to skip.  
 If provided, it will generate win probabilities for first throw quiery against this one.
 
+## Command use
+The only **argument** required is a string query following the `Throw query format`. 
+
 ### Command Option
 #### Iterations
 - **Syntax:** `-i`
 - **Type:** `int`
 - **Default:** `1000000`
 - **Example:** `> ./dice-stats -i=10000 2d6`
-
-## Command use
-The only **argument** required is a string query following the `Throw query format`. 
 
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
