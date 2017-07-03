@@ -1,22 +1,37 @@
 # Dice Probability Distribution Software
 This software generate probability distribution for a given dice throw.
 
-## Installation
+## Download
 *TODO*
-## Use
-### Throw query format
-The only **argument** required is a string query following the format`{n}d{m}(k{p})` where:
+
+## Throw query format
+`{n}d{m}(k{p})` where:
 - `n`: number of dice to throw
 - `m`: number of faces of each dice
 - `p`: number of best dice results to keep  
 
 **Examples:** `2d6`, `3d10`, `7d6k3`.
+
+## Prompt use
+```
+Throw query:
+```
+Requires a string that must follow the `Throw query format`.
+```
+Versus throw query (leave empty to ignore)
+```
+Can be a string that must follow the `Throw query format` or be empty in order to skip.  
+If provided, it will generate win probabilities for first throw quiery against this one.
+
 ### Command Option
 #### Iterations
 - **Syntax:** `-i`
 - **Type:** `int`
 - **Default:** `1000000`
 - **Example:** `> ./dice-stats -i=10000 2d6`
+
+## Command use
+The only **argument** required is a string query following the `Throw query format`. 
 
 Number of iterations to use in order to define probabilities accuracy.
 #### Versus
