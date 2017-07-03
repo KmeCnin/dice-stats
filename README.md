@@ -13,12 +13,12 @@ This software generate probability distribution for a given dice throw.
 **Examples:** `2d6`, `3d10`, `7d6k3`.
 
 ## Prompt use
-```
-Throw query:
+```shell
+> Throw query:
 ```
 Requires a string that must follow the `Throw query format`.
-```
-Versus throw query (leave empty to ignore)
+```shell
+> Versus throw query (leave empty to ignore)
 ```
 Can be a string that must follow the `Throw query format` or be empty in order to skip.  
 If provided, it will generate win probabilities for first throw quiery against this one.
