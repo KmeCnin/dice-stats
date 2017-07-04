@@ -2,8 +2,12 @@
 This software generate probability distribution for a given dice throw.
 
 ## Download
-*TODO*
-
+### Windows
+[dice-stats-win.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-win.tar.gz)
+### Linux
+[dice-stats-linux.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-linux.tar.gz)
+### OSX
+[dice-stats-osx.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-osx.tar.gz)
 ## Throw query format
 `{n}d{m}(k{p})` where:
 - `n`: number of dice to throw
