@@ -1,7 +1,7 @@
 package stats
 
 import (
-	"github.com/kmecnin/dice-stats/input"
+	"github.com/kmecnin/dice-stats/src/input"
 	pb "gopkg.in/cheggaaa/pb.v1"
 )
 

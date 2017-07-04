@@ -4,22 +4,34 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/kmecnin/dice-stats/charts"
-	"github.com/kmecnin/dice-stats/input"
-	"github.com/kmecnin/dice-stats/stats"
+	"github.com/segmentio/go-prompt"
+
+	"github.com/kmecnin/dice-stats/src/charts"
+	"github.com/kmecnin/dice-stats/src/input"
+	"github.com/kmecnin/dice-stats/src/stats"
 )
 
 func main() {
-	// Get user input.
+	isPrompt := false
 	userInput, err := input.ParseCommand()
 	if nil != err {
-		displayError(err)
+		if err.Error() == input.CommandHasNoArgs {
+			userInput, err = input.ParsePrompt()
+			isPrompt = true
+		}
+		if nil != err {
+			displayError(err)
+		}
 	}
 
 	if userInput.Versus == "" {
 		scoreDistribution(userInput)
 	} else {
 		winDistribution(userInput)
+	}
+
+	if isPrompt {
+		prompt.String("Press ENTER to exit")
 	}
 }
 
