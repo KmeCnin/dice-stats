@@ -1,5 +1,6 @@
 # Dice Probability Distribution Software
-This software generate probability distribution for a given dice throw.
+This software generate probability distribution for a given dice throw.  
+
 ![Dice Logo](doc/dice.png)
 
 ## Download
