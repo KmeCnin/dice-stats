@@ -1,5 +1,6 @@
 # Dice Probability Distribution Software
 This software generate probability distribution for a given dice throw.
+![Dice Logo](doc/dice.png)
 
 ## Download
 **Windows:** [dice-stats-win.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-win.tar.gz)  
