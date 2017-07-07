@@ -6,9 +6,9 @@ This software generate probability distribution for a given dice throw.
 ## Download
 | System        | 32-bit        | 64-bit |
 | ------------- |---------------| ------|
-| Windows       | [dice-stats-windows-386.tar.gz](raw/master/misc/app/dice-stats-windows-386.tar.gz) |  |
-| Linux         | centered      |   $12 |
-| OSX           | are neat      |    $1 |
+| Windows       | [dice-stats-windows-386.tar.gz](../../raw/master/misc/app/dice-stats-windows-386.tar.gz) | [dice-stats-windows-386.tar.gz](../../raw/master/misc/app/dice-stats-windows-amd64.tar.gz) |
+| Linux         | [dice-stats-linux-386.tar.gz](../../raw/master/misc/app/dice-stats-linux-386.tar.gz) | [dice-stats-linux-386.tar.gz](../../raw/master/misc/app/dice-stats-linux-amd64.tar.gz) |
+| OSX           | [dice-stats-darwin-386.tar.gz](../../raw/master/misc/app/dice-stats-darwin-386.tar.gz) | [dice-stats-darwin-386.tar.gz](../../raw/master/misc/app/dice-stats-darwin-amd64.tar.gz) |
 
 **Windows:** [dice-stats-win.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-win.tar.gz)  
 **Linux:** [dice-stats-linux.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-linux.tar.gz)  
@@ -55,24 +55,24 @@ Generate probability distribution for throwing 2 dice with 6 faces:
 ```shell
 > ./dice-stats 2d6
 ```
-![Output: 2d6](doc/output/2d6.png)
+![Output: 2d6](misc/doc/output/2d6.png)
 Generate probability distribution for throwing 3 dice with 10 faces:
 ```shell
 > ./dice-stats 3d10
 ```
-![Output: 3d10](doc/output/3d10.png)
+![Output: 3d10](misc/doc/output/3d10.png)
 Generate probability distribution for throwing 7 dice with 6 faces and keeping the 3 best results:
 ```shell
 > ./dice-stats 7d6k3
 ```
-![Output: 7d6k3](doc/output/7d6k3.png)
+![Output: 7d6k3](misc/doc/output/7d6k3.png)
 Generate probability distribution of winning throwing 7 dice with 6 faces and keeping the 3 best results against 5 dice with 6 faces and keeping the 3 best:
 ```shell
 > ./dice-stats -vs=5d6k3 7d6k3
 ```
-![Output: -vs=5d6k3 7d6k3](doc/output/-vs=5d6k3_7d6k3.png)
+![Output: -vs=5d6k3 7d6k3](misc/doc/output/-vs=5d6k3_7d6k3.png)
 Generate probability distribution of winning throwing 17 dice with 4 faces and keeping the 9 best results against 25 dice with 4 faces and keeping the 6 best:
 ```shell
 > ./dice-stats -vs=25d4k6 17d4k9
 ```
-![Output: -vs=25d4k6 17d4k9](doc/output/-vs=25d4k6_17d4k9.png)
+![Output: -vs=25d4k6 17d4k9](misc/doc/output/-vs=25d4k6_17d4k9.png)
