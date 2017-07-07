@@ -6,13 +6,10 @@ This software generate probability distribution for a given dice throw.
 ## Download
 | System        | 32-bit        | 64-bit |
 | ------------- |---------------| ------|
-| Windows       | [dice-stats-windows-386.tar.gz](../../raw/master/misc/app/dice-stats-windows-386.tar.gz) | [dice-stats-windows-386.tar.gz](../../raw/master/misc/app/dice-stats-windows-amd64.tar.gz) |
-| Linux         | [dice-stats-linux-386.tar.gz](../../raw/master/misc/app/dice-stats-linux-386.tar.gz) | [dice-stats-linux-386.tar.gz](../../raw/master/misc/app/dice-stats-linux-amd64.tar.gz) |
-| OSX           | [dice-stats-darwin-386.tar.gz](../../raw/master/misc/app/dice-stats-darwin-386.tar.gz) | [dice-stats-darwin-386.tar.gz](../../raw/master/misc/app/dice-stats-darwin-amd64.tar.gz) |
+| Windows       | [dice-stats-windows-386.tar.gz](../../raw/master/misc/app/dice-stats-windows-386.tar.gz) | [dice-stats-windows-amd64.tar.gz](../../raw/master/misc/app/dice-stats-windows-amd64.tar.gz) |
+| Linux         | [dice-stats-linux-386.tar.gz](../../raw/master/misc/app/dice-stats-linux-386.tar.gz) | [dice-stats-linux-amd64.tar.gz](../../raw/master/misc/app/dice-stats-linux-amd64.tar.gz) |
+| OSX           | [dice-stats-darwin-386.tar.gz](../../raw/master/misc/app/dice-stats-darwin-386.tar.gz) | [dice-stats-darwin-amd64.tar.gz](../../raw/master/misc/app/dice-stats-darwin-amd64.tar.gz) |
 
-**Windows:** [dice-stats-win.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-win.tar.gz)  
-**Linux:** [dice-stats-linux.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-linux.tar.gz)  
-**OSX:** [dice-stats-osx.tar.gz](https://github.com/KmeCnin/dice-stats/raw/master/app/dice-stats-osx.tar.gz)  
 ## Throw query format
 `{n}d{m}(k{p})` where:
 - `n`: number of dice to throw
