@@ -6,8 +6,9 @@ OSLIST="linux windows darwin"
 ARCHLIST="386 amd64"
 
 # Clean old versions
-rm -fR ./misc/build/*
-rm -fR ./misc/app/*
+rm -fR ./misc/build
+rm -fR ./misc/app
+mkdir ./misc/app
 
 for os in $OSLIST; do
     for arch in $ARCHLIST; do
