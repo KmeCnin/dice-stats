@@ -67,7 +67,6 @@ func scoreDistribution(userInput input.Input) {
 
 	displayMsgScore(throw)
 	proba := stats.DistributionOfScore(throw, userInput.Iterations)
-	_ = proba
 	charts.DrawProbabilitiesHistogramScore(proba)
 }
 

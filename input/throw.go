@@ -19,7 +19,7 @@ type Throw struct {
 // GetThrow creates and returns a parsed input from data raw input.
 func GetThrow(query string) (Throw, error) {
 	// Create regexp.
-	re, err := regexp.Compile(`^(\d+)d(\d+)k?(\d+)?`)
+	re, err := regexp.Compile(`^(\d+)d(\d+)(k(\d+))?$`)
 	if nil != err {
 		return Throw{}, err
 	}
@@ -41,10 +41,14 @@ func GetThrow(query string) (Throw, error) {
 	}
 	keepNumber := 0
 	if "" != res[0][3] {
-		keepNumber, err = strconv.Atoi(res[0][3])
+		keepNumber, err = strconv.Atoi(res[0][4])
 		if nil != err {
 			return Throw{}, err
 		}
+	}
+
+	if keepNumber > diceNumber {
+		keepNumber = diceNumber
 	}
 
 	return Throw{
@@ -76,9 +80,8 @@ func (t *Throw) bestTry(r *rand.Rand) int {
 		t.launches[i] = launchDie(t.DiceFaces, r)
 	}
 	sort.Sort(sort.Reverse(sort.IntSlice(t.launches)))
-	t.launches = t.launches[:t.KeepNumber]
 	sum := 0
-	for _, i := range t.launches {
+	for _, i := range t.launches[:t.KeepNumber] {
 		sum += i
 	}
 	return sum
