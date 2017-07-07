@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
+	"runtime/pprof"
 
 	"github.com/segmentio/go-prompt"
 
@@ -12,6 +14,13 @@ import (
 )
 
 func main() {
+	f, err := os.Create("/tmp/prof")
+	if err != nil {
+		log.Fatal(err)
+	}
+	pprof.StartCPUProfile(f)
+	defer pprof.StopCPUProfile()
+
 	isPrompt := false
 	userInput, err := input.ParseCommand()
 	if nil != err {
@@ -58,7 +67,8 @@ func scoreDistribution(userInput input.Input) {
 
 	displayMsgScore(throw)
 	proba := stats.DistributionOfScore(throw, userInput.Iterations)
-	charts.DrawProbabilitiesHistogramScore(proba)
+	_ = proba
+	// charts.DrawProbabilitiesHistogramScore(proba)
 }
 
 func displayError(err error) {

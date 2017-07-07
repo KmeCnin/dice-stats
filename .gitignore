@@ -15,3 +15,7 @@
 
 # IDE relative files
 .vscode/
+
+# Binaries
+dice-stats
+src/src

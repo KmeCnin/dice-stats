@@ -54,10 +54,10 @@ func GetThrow(query string) (Throw, error) {
 }
 
 // Try launches the dice defined in given throw and sum all the results up.
-func (t *Throw) Try() int {
-	var launches []int
+func (t *Throw) Try(r *rand.Rand) int {
+	launches := make([]int, t.DiceNumber)
 	for i := 0; i < t.DiceNumber; i++ {
-		launches = append(launches, launchDie(t.DiceFaces))
+		launches[i] = launchDie(t.DiceFaces, r)
 	}
 
 	if t.KeepNumber > 0 {
@@ -73,6 +73,6 @@ func (t *Throw) Try() int {
 	return sum
 }
 
-func launchDie(faces int) int {
-	return rand.Intn(faces) + 1
+func launchDie(faces int, r *rand.Rand) int {
+	return r.Intn(faces) + 1
 }

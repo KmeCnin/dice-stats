@@ -1,6 +1,11 @@
 package stats
 
 import (
+	"math/rand"
+	"sync"
+
+	"runtime"
+
 	"github.com/kmecnin/dice-stats/src/input"
 	pb "gopkg.in/cheggaaa/pb.v1"
 )
@@ -9,11 +14,34 @@ import (
 // for each possible final score.
 func DistributionOfScore(throw input.Throw, iterations int) map[int]int {
 	progress := pb.StartNew(iterations)
+	workers := runtime.NumCPU()
+
+	scoresBulk := make(chan []int, workers)
+	bulk := iterations / workers
+	wg := new(sync.WaitGroup)
+	wg.Add(workers)
+	for i := 0; i < workers; i++ {
+		go func() {
+			defer wg.Done()
+			r := rand.New(rand.NewSource(int64(i)).(rand.Source64))
+			tries := make([]int, bulk)
+			for i := 0; i < bulk; i++ {
+				tries[i] = throw.Try(r)
+				progress.Increment()
+			}
+			scoresBulk <- tries
+		}()
+	}
+	go func() {
+		wg.Wait()
+		close(scoresBulk)
+	}()
 
 	statistics := make(map[int]int)
-	for i := 0; i < iterations; i++ {
-		statistics[throw.Try()]++
-		progress.Increment()
+	for scores := range scoresBulk {
+		for _, score := range scores {
+			statistics[score]++
+		}
 	}
 
 	probabilities := make(map[int]int)
@@ -43,8 +71,9 @@ func DistributionOfWin(throw1, throw2 input.Throw, iterations int) VersusProbabi
 	winStats := 0
 	loseStats := 0
 	drawStats := 0
+	r := rand.New(rand.NewSource(1).(rand.Source64))
 	for i := 0; i < iterations; i++ {
-		diff := throw1.Try() - throw2.Try()
+		diff := throw1.Try(r) - throw2.Try(r)
 		if diff > 0 {
 			winStats++
 		} else if diff < 0 {
