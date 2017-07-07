@@ -13,6 +13,7 @@ type Throw struct {
 	DiceNumber int
 	DiceFaces  int
 	KeepNumber int
+	launches   []int
 }
 
 // GetThrow creates and returns a parsed input from data raw input.
@@ -50,26 +51,36 @@ func GetThrow(query string) (Throw, error) {
 		DiceNumber: diceNumber,
 		DiceFaces:  diceFaces,
 		KeepNumber: keepNumber,
+		launches:   make([]int, diceNumber),
 	}, nil
 }
 
 // Try launches the dice defined in given throw and sum all the results up.
 func (t *Throw) Try(r *rand.Rand) int {
-	launches := make([]int, t.DiceNumber)
-	for i := 0; i < t.DiceNumber; i++ {
-		launches[i] = launchDie(t.DiceFaces, r)
+	if t.KeepNumber == 0 {
+		return t.simpleTry(r)
 	}
+	return t.bestTry(r)
+}
 
-	if t.KeepNumber > 0 {
-		sort.Sort(sort.Reverse(sort.IntSlice(launches)))
-		launches = launches[:t.KeepNumber]
-	}
-
+func (t *Throw) simpleTry(r *rand.Rand) int {
 	sum := 0
-	for _, i := range launches {
+	for i := 0; i < t.DiceNumber; i++ {
+		sum += launchDie(t.DiceFaces, r)
+	}
+	return sum
+}
+
+func (t *Throw) bestTry(r *rand.Rand) int {
+	for i := 0; i < t.DiceNumber; i++ {
+		t.launches[i] = launchDie(t.DiceFaces, r)
+	}
+	sort.Sort(sort.Reverse(sort.IntSlice(t.launches)))
+	t.launches = t.launches[:t.KeepNumber]
+	sum := 0
+	for _, i := range t.launches {
 		sum += i
 	}
-
 	return sum
 }
 

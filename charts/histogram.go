@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/kmecnin/dice-stats/src/stats"
+	"github.com/kmecnin/dice-stats/stats"
 )
 
 // DrawProbabilitiesHistogramWin displays probabilities as a histogram chart.

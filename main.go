@@ -8,9 +8,9 @@ import (
 
 	"github.com/segmentio/go-prompt"
 
-	"github.com/kmecnin/dice-stats/src/charts"
-	"github.com/kmecnin/dice-stats/src/input"
-	"github.com/kmecnin/dice-stats/src/stats"
+	"github.com/kmecnin/dice-stats/charts"
+	"github.com/kmecnin/dice-stats/input"
+	"github.com/kmecnin/dice-stats/stats"
 )
 
 func main() {
@@ -68,7 +68,7 @@ func scoreDistribution(userInput input.Input) {
 	displayMsgScore(throw)
 	proba := stats.DistributionOfScore(throw, userInput.Iterations)
 	_ = proba
-	// charts.DrawProbabilitiesHistogramScore(proba)
+	charts.DrawProbabilitiesHistogramScore(proba)
 }
 
 func displayError(err error) {

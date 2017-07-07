@@ -6,7 +6,7 @@ import (
 
 	"runtime"
 
-	"github.com/kmecnin/dice-stats/src/input"
+	"github.com/kmecnin/dice-stats/input"
 	pb "gopkg.in/cheggaaa/pb.v1"
 )
 
@@ -27,7 +27,9 @@ func DistributionOfScore(throw input.Throw, iterations int) map[int]int {
 			tries := make([]int, bulk)
 			for i := 0; i < bulk; i++ {
 				tries[i] = throw.Try(r)
-				progress.Increment()
+				if i%1000 == 0 {
+					progress.Add(1000)
+				}
 			}
 			scoresBulk <- tries
 		}()
@@ -35,6 +37,7 @@ func DistributionOfScore(throw input.Throw, iterations int) map[int]int {
 	go func() {
 		wg.Wait()
 		close(scoresBulk)
+		progress.Finish()
 	}()
 
 	statistics := make(map[int]int)
@@ -52,7 +55,6 @@ func DistributionOfScore(throw input.Throw, iterations int) map[int]int {
 		}
 	}
 
-	progress.Finish()
 	return probabilities
 }
 
