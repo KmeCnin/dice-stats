@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Dice Stats
-Comment=Dice Probability Distribution Software
-Exec=bash -c 'cd "$(dirname %k)" && ./dice-stats-linux-386;$SHELL'
-Icon=utilities-terminal
-Terminal=true 
-Type=Application
-Categories=Application;
