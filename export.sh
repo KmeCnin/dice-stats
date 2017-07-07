@@ -42,6 +42,6 @@ EOF
             # Rename to .exe on Windows
             mv $BUILDPATH/dice-stats-$os-$arch $BUILDPATH/dice-stats-$os-$arch.exe
         fi
-        tar czf ./misc/app/dice-stats-$os-$arch.tar.gz $BUILDPATH
+        tar czf ./misc/app/dice-stats-$os-$arch.tar.gz -C $BUILDPATH/ .
     done
 done
